@@ -20,9 +20,7 @@
             <div id="equacao" class="margemInf centrarH">
                 <div class="centrarT">
                     <div class="equacaoWrapper centrarH">
-                        <asp:Label ID="labelA" runat="server" class="subtitulo" BackColor="#4b5465">ax<sup>2</sup> + </asp:Label>
-                        <asp:Label ID="labelB" runat="server">bx + </asp:Label>
-                        <asp:Label ID="labelC" runat="server">c</asp:Label>
+                        <asp:Label ID="labelA" runat="server" class="subtitulo" BackColor="">ax<sup>2</sup> + bx + c = 0</asp:Label>
                     </div>
                 </div>
                 <div class="centrarT">
@@ -30,25 +28,23 @@
                         a =<asp:TextBox ID="TextBoxA" runat="server" CssClass="caixaTexto"></asp:TextBox>
                         b =<asp:TextBox ID="TextBoxB" runat="server" CssClass="caixaTexto"></asp:TextBox>
                         c =<asp:TextBox ID="TextBoxC" runat="server" CssClass="caixaTexto"></asp:TextBox>
-                        <asp:Button ID="botaoCalcular" runat="server" OnClick="botaoCalcular_Click" Text="Calcular" CssClass="botao" BackColor="#45c8dc" ForeColor="#f7f8f8" Font-Size="14px" Font-Bold="true"/>
+                        <asp:Button ID="botaoCalcular" runat="server" OnClick="botaoCalcular_Click" Text="Calcular" CssClass="botao" BorderWidth="0px"   BackColor="#45c8dc" ForeColor="#f7f8f8" Font-Size="14px" Font-Bold="true"/>
                     </div>
                 </div>
                 <div class="subtitulo" style="margin-left:17px;">Resultado</div>
                 <div class="centrarT">
-                    <asp:Label ID="label1" runat="server" Text="Label" BorderWidth="1px" Height="80px" Width="516px"></asp:Label>
+                    <asp:Label ID="label1" runat="server" BorderWidth="1px" Height="80px" Width="516px"><br />x1=<br />x2=</asp:Label>
                 </div>
             </div>
             <div class="titulo">GRÁFICO</div>
             <div id="grafico" class="margemInf centrarH">
                 <div class="centrarT">
                     <div class="equacaoWrapper centrarH" style="margin-bottom:5px;">
-                        <asp:Label ID="label2" runat="server" class="subtitulo">f(x) = ax<sup>2</sup> + </asp:Label>
-                        <asp:Label ID="label3" runat="server">bx + </asp:Label>
-                        <asp:Label ID="label4" runat="server">c</asp:Label>
+                        <asp:Label ID="label2" runat="server" class="subtitulo">f(x) = ax<sup>2</sup> + bx + c </asp:Label>
                     </div>
                 </div>
                 <div class="subtitulo" style="margin-left:17px;">Resultado</div>
-                <div id="areaGrafico" class="centrarH frame margemInf"></div>
+                <div id="areaGrafico" class="centrarH frame margemInf">gráfico</div>
             </div>
         </div>
 

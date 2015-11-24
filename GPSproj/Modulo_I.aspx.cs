@@ -13,7 +13,7 @@ public partial class homepage : System.Web.UI.Page
     }
     protected void botaoCalcular_Click(object sender, EventArgs e)
     {
-        Calculo calculo1=new Calculo();
+        
 
     }
 }
