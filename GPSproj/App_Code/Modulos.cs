@@ -4,33 +4,23 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for Modulo_II
+/// Classe com os métodos responsáveis pelas operações de cálculo de X de uma equação do tipo ax^2+bx+c=0 .
 /// </summary>
 public class Calculo
 {
-    double a, b, c;
-
-    double A
+    //Calculo x1 pela formula resolvente quando existem os 3 termos a, b e c.
+    //Recebe a, b, e c e retorna o resultado.
+    public double FR_a_x1(double a, double b, double c)
     {
-        get { return a; }
-        set { a = value; }
+        return (-b + Math.Sqrt(b - 4 * a * c)) / (a * c);
     }
 
-    double B
+    //Calculo x2 pela formula resolvente quando existem os 3 termos a, b e c
+    //Recebe a, b, e c e retorna o resultado.
+    public double FR_a_x2(double a, double b, double c)
     {
-        get { return b; }
-        set { b = value; }
-    }
-
-    double C
-    {
-        get { return c; }
-        set { c = value; }
-    }
-
-    double calcularX1()
-    {
-        return a + b + c;
+        return (-b - Math.Sqrt(b - 4 * a * c)) / (a * c);
     }
 
 }
+
