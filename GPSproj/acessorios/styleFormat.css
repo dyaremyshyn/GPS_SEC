@@ -1,0 +1,109 @@
+﻿body{
+    margin:0;
+    padding:0;
+    background-color:#262a33;
+    color:#383e4b;
+}
+.centrarWrappers{
+    margin:0;
+    padding:0;
+    font-weight:bold;
+}
+
+.titulo{
+    font-size:14px;
+    margin-left:25px;
+}
+
+.subtitulo{
+    font-size:14px;
+}
+
+.centrarH{
+    margin:0 auto;
+}
+
+.centrarT{
+    text-align:center;
+}
+
+.frame{
+    border:1px solid black;
+}
+
+.margemSup{
+    margin-top:25px;
+}
+
+.margemInf{
+    margin-bottom:25px;
+}
+
+#wrapperTotal{
+    width:600px;
+    background-color:#f7f8f8;
+    margin-bottom:0;
+}
+
+#logo{
+    background-color:#45c8dc; /*#3eb4c6*/
+    height:80px;
+    width:600px;
+    margin-bottom:0;
+}
+
+#logo2{
+    display:inline-block;
+    background-color:#f7f8f8;
+    width:100px;
+    height:60px;
+    margin-top:10px;
+}
+
+#equacao{
+    background-color:#eff0f0;
+    width:550px;
+    padding-bottom:15px;
+}
+
+#grafico{
+    background-color:#eff0f0;
+    width:550px;
+    padding-bottom:1px;
+    margin-bottom:10px;
+}
+
+.equacaoWrapper{
+    display:inline-block;
+    margin-top:10px;
+}
+
+#caixaTextoWrapper{
+    display:inline-block;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.caixaTexto{
+    width:80px;
+    height:30px;
+    margin-left:7px;
+    margin-right:25px;
+    text-align:center;
+}
+
+#botaoCalcular{
+    width:100px;
+    height:36px;
+}
+
+.botao{
+     width:100px;
+    height:36px;
+}
+
+#areaGrafico{
+    width:516px;
+    height:200px;
+    background-color:#f7f8f8;
+}
