@@ -11,13 +11,53 @@ public partial class homepage : System.Web.UI.Page
     {
 
     }
+
+    protected string digitos() //arredondamento a 2 casas decimais
+    {
+        return "{0:0.00}";
+    }
+
+
     protected void botaoCalcular_Click(object sender, EventArgs e)
     {
         Calculo novo = new Calculo();
-       
-        //Calculo x1 pela formula resolvente quando existem os 3 termos a, b e c
-        resultado.Text ="x1 = "+novo.FR_a_x1(Convert.ToDouble(TextBoxA.Text), Convert.ToDouble(TextBoxB.Text), Convert.ToDouble(TextBoxC.Text)).ToString()+"<br />"
-            + "x2 = " + novo.FR_a_x2(Convert.ToDouble(TextBoxA.Text), Convert.ToDouble(TextBoxB.Text), Convert.ToDouble(TextBoxC.Text)).ToString();
+        double a = Convert.ToDouble(TextBoxA.Text);
+        double b = Convert.ToDouble(TextBoxB.Text);
+        double c = Convert.ToDouble(TextBoxC.Text);
 
+        //caso o parametro A seja 0 (reta)
+        if (a == 0 && b == 0)
+        {
+            //reta horizontal não apresenta 0´s
+            resultado.Text = "Reta horizontal";
+        }
+        else {
+                  if (a == 0 && c == 0) 
+                  { 
+                  //reta obliqua que passa sempre em 0
+                      resultado.Text = "x = 0 <br />";
+                  }
+                  else{
+                      if(a==0){
+                              //reta obliqua com 1 zero                          
+                              resultado.Text = "x = " + string.Format(digitos(), novo.FR_b(b, c).ToString()) + "<br />";                            
+                              }else{
+                                    //equação tem de ser possivel
+                                     if (novo.ValidaEq(a, b, c))
+                                     {
+                                     //Calculo x1 pela formula resolvente quando existem os 3 termos a, b e c
+                                     resultado.Text = "x1 = " + string.Format(digitos(),novo.FR_a_x1(a, b, c).ToString()) + "<br />"
+                                     + "x2 = " + string.Format(digitos(),novo.FR_a_x2(a, b, c).ToString());
+                                     }else { 
+                                            //escreve equação impossivel numa label 
+                                            resultado.Text = "Equação impossivel";
+                                           }
+
+                                   }
+
+                      }
+                   
+            }
+       
     }
 }
