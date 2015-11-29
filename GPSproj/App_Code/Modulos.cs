@@ -13,7 +13,7 @@ public class Calculo
      public bool ValidaEq(double a, double b, double c)
     {  
          double valor = b*b - 4 * a * c;
-         if (valor <= 0)
+         if (valor < 0)
          {
              return false;
          }
