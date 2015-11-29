@@ -40,14 +40,14 @@ public partial class homepage : System.Web.UI.Page
                   else{
                       if(a==0){
                               //reta obliqua com 1 zero                          
-                              resultado.Text = "x = " + string.Format(digitos(), novo.FR_b(b, c).ToString()) + "<br />";                            
+                              resultado.Text = "x = " + string.Format(digitos(), novo.FR_b(b, c)) + "<br />";                            
                               }else{
                                     //equação tem de ser possivel
                                      if (novo.ValidaEq(a, b, c))
                                      {
                                      //Calculo x1 pela formula resolvente quando existem os 3 termos a, b e c
-                                     resultado.Text = "x1 = " + string.Format(digitos(),novo.FR_a_x1(a, b, c).ToString()) + "<br />"
-                                     + "x2 = " + string.Format(digitos(),novo.FR_a_x2(a, b, c).ToString());
+                                     resultado.Text = "x1 = " + string.Format(digitos(),novo.FR_a_x1(a, b, c)) + "<br />"
+                                     + "x2 = " + string.Format(digitos(),novo.FR_a_x2(a, b, c));
                                      }else { 
                                             //escreve equação impossivel numa label 
                                             resultado.Text = "Equação impossivel";
