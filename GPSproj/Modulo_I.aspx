@@ -25,9 +25,9 @@
                 </div>
                 <div class="centrarT">
                     <div id="caixaTextoWrapper" class="subtitulo">
-                        a =<asp:TextBox ID="TextBoxA" runat="server" CssClass="caixaTexto" OnTextChanged="TextBoxA_TextChanged"></asp:TextBox>
-                        b =<asp:TextBox ID="TextBoxB" runat="server" CssClass="caixaTexto"></asp:TextBox>
-                        c =<asp:TextBox ID="TextBoxC" runat="server" CssClass="caixaTexto"></asp:TextBox>
+                        a =<asp:TextBox ID="TextBoxA" runat="server" CssClass="caixaTexto" AutoPostBack="true" OnTextChanged="TextBoxA_TextChanged"></asp:TextBox>
+                        b =<asp:TextBox ID="TextBoxB" runat="server" CssClass="caixaTexto" AutoPostBack="true" OnTextChanged="TextBoxB_TextChanged"></asp:TextBox>
+                        c =<asp:TextBox ID="TextBoxC" runat="server" CssClass="caixaTexto" AutoPostBack="true" OnTextChanged="TextBoxC_TextChanged"></asp:TextBox>
                         <asp:Button ID="botaoCalcular" runat="server" OnClick="botaoCalcular_Click" Text="Calcular" CssClass="botao" BorderWidth="0px"   BackColor="#45c8dc" ForeColor="#f7f8f8" Font-Size="14px" Font-Bold="true"/>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 public partial class homepage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -63,8 +64,27 @@ public partial class homepage : System.Web.UI.Page
 
     protected void TextBoxA_TextChanged(object sender, EventArgs e)
     {
-        string ch = e.ToString();
+        if (!validar())
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true); 
 
-        //fazer o TryParse
+    }
+    protected void TextBoxB_TextChanged(object sender, EventArgs e)
+    {
+        if (!validar())
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true); 
+
+    }
+    protected void TextBoxC_TextChanged(object sender, EventArgs e)
+    {
+        if (!validar())
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true); 
+
+    }
+    private bool validar()
+    {
+        double valorA= 0, valorB=0,valorC=0;
+        if (double.TryParse(TextBoxA.Text, out valorA) && double.TryParse(TextBoxB.Text, out valorB) && double.TryParse(TextBoxC.Text, out valorC))
+            return true;
+        return false;
     }
 }
