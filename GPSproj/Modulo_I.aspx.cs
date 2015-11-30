@@ -60,4 +60,11 @@ public partial class homepage : System.Web.UI.Page
             }
        
     }
+
+    protected void TextBoxA_TextChanged(object sender, EventArgs e)
+    {
+        string ch = e.ToString();
+
+        //fazer o TryParse
+    }
 }
