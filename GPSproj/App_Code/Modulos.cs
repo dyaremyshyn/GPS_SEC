@@ -9,30 +9,49 @@ using System.Web;
 /// 
 
 public class Calculo
-{   //Valida equação _-não da para fazer calculo de raizes negativas- logo equação será impossivel
+{   
     double a, b, c;
 
-    public Calculo()
+    //construtor que recebe 3 strings correspondentes às caixas de texto com os termos e converte-as para números com formato double;
+    //de seguida coloca-os nos respectivos campos da class (double a, b e c) correspondentes aos termos a, b e c da equação.
+    public Calculo(string stringA, string stringB, string stringC)
     {
-        this.a = 0;
-        this.b = 0;
-        this.c = 0;
+        // testar se alguma das caixas de texto está vazia, ou eja,  possui uma string vazia, substituindo-a por 0
+        if (stringA.Equals(""))
+        {
+            stringA = "0";
+        }
+        if (stringB.Equals(""))
+        {
+            stringB = "0";
+        }
+        if (stringC.Equals(""))
+        {
+            stringC = "0";
+        }
+
+        //guarda os valores nos respetivos campos
+        a = Convert.ToDouble(stringA);
+        b = Convert.ToDouble(stringB);
+        c = Convert.ToDouble(stringC);
     }
+
     public double getA()
     {
         return a;
     }
-
+ 
     public double getB()
     {
-        return b;
+        return c;
     }
-
+    
     public double getC()
     {
         return c;
     }
-     public bool ValidaEq(double a, double b, double c)
+
+    public bool ValidaEq(double a, double b, double c)
     {  
          double valor = b*b - 4 * a * c;
          if (valor <= 0)
@@ -43,29 +62,6 @@ public class Calculo
               return true;
               }
     }
-     //recebe 3 strings correspondentes às caixas de texto com os termos e converte-as para números com formato double;
-     //de seguida coloca-os nos respectivos campos correspondentes aos termos a, b e c 
-     public void setABC(string stringA, string stringB, string stringC)
-     {
-         // testar se alguma das caixas de texto possuía uma string vazia, substituindo-a por 0
-         if (stringA.Equals(""))
-         {
-             stringA = "0";
-         }
-         if (stringB.Equals(""))
-         {
-             stringB = "0";
-         }
-         if (stringC.Equals(""))
-         {
-             stringC = "0";
-         }
-
-         //guarda os valores nos respetivos campos
-         a = Convert.ToDouble(stringA);
-         b = Convert.ToDouble(stringB);
-         c = Convert.ToDouble(stringC);
-     }
 
     //Calcula x1 pela formula resolvente quando existem os 3 termos a, b e c.
     //Recebe a, b, e c e retorna o resultado.

@@ -1,0 +1,6 @@
+C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\CopiasParaTestes\bin\Debug\CopiasParaTestes.exe.config
+C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\CopiasParaTestes\bin\Debug\CopiasParaTestes.exe
+C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\CopiasParaTestes\bin\Debug\CopiasParaTestes.pdb
+C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\CopiasParaTestes\obj\Debug\CopiasParaTestes.csprojResolveAssemblyReference.cache
+C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\CopiasParaTestes\obj\Debug\CopiasParaTestes.exe
+C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\CopiasParaTestes\obj\Debug\CopiasParaTestes.pdb
