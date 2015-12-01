@@ -53,6 +53,9 @@ public partial class homepage : System.Web.UI.Page
        
     }
 
+
+    // *********************************** FALTA COMENTAR ****************************************************
+
     protected void TextBoxA_TextChanged(object sender, EventArgs e)
     {
         if (!validar("txtA"))
