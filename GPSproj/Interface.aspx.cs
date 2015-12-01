@@ -55,27 +55,40 @@ public partial class homepage : System.Web.UI.Page
 
     protected void TextBoxA_TextChanged(object sender, EventArgs e)
     {
-        if (!validar())
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true); 
+        if (!validar("txtA"))
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true);
 
     }
     protected void TextBoxB_TextChanged(object sender, EventArgs e)
     {
-        if (!validar())
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true); 
+        if (!validar("txtB"))
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true);
 
     }
     protected void TextBoxC_TextChanged(object sender, EventArgs e)
     {
-        if (!validar())
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true); 
+        if (!validar("txtC"))
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true);
 
     }
-    private bool validar()
+    private bool validar(string txt)
     {
-        double valorA= 0, valorB=0,valorC=0;
-        if (double.TryParse(TextBoxA.Text, out valorA) && double.TryParse(TextBoxB.Text, out valorB) && double.TryParse(TextBoxC.Text, out valorC))
-            return true;
+        double valor = 0;
+        if (txt.Equals("txtA"))
+        {
+            if (double.TryParse(TextBoxA.Text, out valor))
+                return true;
+        }
+        else if (txt.Equals("txtB"))
+        {
+            if (double.TryParse(TextBoxB.Text, out valor))
+                return true;
+        }
+        else if (txt.Equals("txtC"))
+        {
+            if (double.TryParse(TextBoxC.Text, out valor))
+                return true;
+        }
         return false;
     }
 }
