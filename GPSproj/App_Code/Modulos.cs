@@ -10,7 +10,7 @@ using System.Web;
 
 public class Calculo
 {   
-    double a, b, c;
+    double termoA, termoB, termoC;
 
     //construtor que recebe 3 strings correspondentes às caixas de texto com os termos e converte-as para números com formato double;
     //de seguida coloca-os nos respectivos campos da class (double a, b e c) correspondentes aos termos a, b e c da equação.
@@ -31,29 +31,29 @@ public class Calculo
         }
 
         //guarda os valores nos respetivos campos
-        a = Convert.ToDouble(stringA);
-        b = Convert.ToDouble(stringB);
-        c = Convert.ToDouble(stringC);
+        termoA = Convert.ToDouble(stringA);
+        termoB = Convert.ToDouble(stringB);
+        termoC = Convert.ToDouble(stringC);
     }
 
     public double getA()
     {
-        return a;
-    }
- 
-    public double getB()
-    {
-        return c;
-    }
-    
-    public double getC()
-    {
-        return c;
+        return termoA;
     }
 
-    public bool ValidaEq(double a, double b, double c)
-    {  
-         double valor = b*b - 4 * a * c;
+    public double getB()
+    {
+        return termoB;
+    }
+
+    public double getC()
+    {
+        return termoC;
+    }
+
+    public bool ValidaEq()
+    {
+        double valor = termoB * termoB - 4 * termoA * termoC;
          if (valor <= 0)
          {
              return false;
@@ -63,51 +63,30 @@ public class Calculo
               }
     }
 
-    //Calcula x1 pela formula resolvente quando existem os 3 termos a, b e c.
-    //Recebe a, b, e c e retorna o resultado.
-    public double FR_a_x1(double a, double b, double c)
+
+    //Calcula x1 pela formula resolvente quando: --> existem os 3 termos a, b e c são diferentes de zero,
+    //                                           --> c=0 ou b=0
+    //Retorna o resultado.
+    public double formulaResolvente_x1()
     {
-        return (-b + Math.Sqrt(b*b - 4 * a * c)) / (2*a);
+        return (-termoB + Math.Sqrt(termoB * termoB - 4 * termoA * termoC)) / (2 * termoA);
     }
 
-    //Calcula x2 pela formula resolvente quando existem os 3 termos a, b e c
-    //Recebe a, b, e c e retorna o resultado.
-    public double FR_a_x2(double a, double b, double c)
+    //Calcula x2 pela formula resolvente quando: --> existem os 3 termos a, b e c são diferentes de zero,
+    //                                           --> c=0 ou b=0
+    //Retorna o resultado.
+    public double formulaResolvente_x2()
     {
-        return (-b - Math.Sqrt(b*b - 4 * a * c)) / (2*a);
+        return (-termoB - Math.Sqrt(termoB * termoB - 4 * termoA * termoC)) / (2 * termoA);
     }
 
-    //Calcula X quando o termo a=0.
-    //Recebe b e c e retorna o resultado.
-    public double FR_b( double b, double c)
+    //Calcula o valor de x quando a=0 e (b && c)!=0
+    public double formulaSimplificada()
     {
-        double zero = 0;
-        zero = c / b;
-        return zero;
+        return -termoC / termoB;
     }
 
-    //Calcula x1 quando o termo b=0.
-    //Recebe a e c e retorna o resultado.
-    public double FR_c_x1(double a, double b, double c)
-    {
-        return 2.3;
-    }
-
-    //Calcula x2 quando o termo b=0.
-    //Recebe a e c e retorna o resultado.
-    public double FR_c_x2(double a, double b, double c)
-    {
-        return 2.3;
-    }
-
-    //regra de ruffini
-    public double rRuffini_x1()
-    {
-        return 3;
-    }
-
-    //regra de ruffini
-    public double rRuffini_x2()
+    public double metodoNewton()
     {
         return 3;
     }
