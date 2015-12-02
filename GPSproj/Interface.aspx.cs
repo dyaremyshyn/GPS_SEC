@@ -53,12 +53,13 @@ public partial class homepage : System.Web.UI.Page
        
     }
 
+    //********************************************** EVENTO ****************************************************
 
-    // *********************************** FALTA COMENTAR ****************************************************
-
+    //Este evento, chama uma função auxiliar que faz a validação do que está a ser escrito na TextBox correspondente
+    //Se tiver recebido false (a operação de conversão correu mal), mostramos uma caixa de erro com o texto a dizer que só aceitamos valores numericos
     protected void TextBoxA_TextChanged(object sender, EventArgs e)
     {
-        if (!validar("txtA"))
+        if (!validar("txtA")) 
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true);
 
     }
@@ -74,6 +75,12 @@ public partial class homepage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true);
 
     }
+
+    //************************************************ FUNÇÃO validar() *************************************************
+
+    //Função validar() recebe o nove da TextBox que está a ser "utilizada" e tenta fazer a conversão para um double.
+    //Se conseguir converter, guarda o valor convertido para uma variável do tipo double e retorna true (a operação correu bem)
+    //Se não conseguir converter, retorna false (a operação correu mal)
     private bool validar(string txt)
     {
         double valor = 0;
