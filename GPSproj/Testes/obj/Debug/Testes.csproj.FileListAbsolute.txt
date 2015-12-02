@@ -1,7 +1,0 @@
-C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\Testes\bin\Debug\Testes.dll
-C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\Testes\bin\Debug\Testes.pdb
-C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\Testes\bin\Debug\CopiasParaTestes.exe
-C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\Testes\bin\Debug\CopiasParaTestes.pdb
-C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\Testes\obj\Debug\Testes.csprojResolveAssemblyReference.cache
-C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\Testes\obj\Debug\Testes.dll
-C:\Users\Utilizador\Desktop\GPS_SEC\GPSproj\Testes\obj\Debug\Testes.pdb
