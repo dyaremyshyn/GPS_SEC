@@ -10,21 +10,23 @@ public partial class homepage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
-            botaoCalcular.Enabled = false;
-        }
     }
 
     protected void botaoCalcular_Click(object sender, EventArgs e)
     {
-        double erroComparacao=0.01;
+        const double erroComparacao=0.01;
+
+        if ((TextBoxA.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")) || (TextBoxB.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")) || (TextBoxC.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")))
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
+            return;
+        }
 
         //testar se as 3 caixas de texto se encontram vazias (o que significa que são interpretadas como tendo o valor 0)
         //se estiverem vazias, não é possível efectuar qualquer cálculo
         if (TextBoxA.Text.Equals("") && TextBoxB.Text.Equals("") && TextBoxC.Text.Equals(""))
         {
-            //#############################################MENSAGEM DE ERRO
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Não foram introduzidos quaisquer valores.');", true);
             return;
         }
 
@@ -51,21 +53,22 @@ public partial class homepage : System.Web.UI.Page
         //se discriminante<0 a equação não possui raízes
         if (discriminante < 0)
         {
-            //#############################################MENSAGEM DE ERRO --> a equação não possui raízes
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('A equação indicada não possui raízes.');", true);
             return;
         }
 
-        //se discriminante=0 a equação possui 1 raiz
+        //se discriminante=0 a equação possui apenas 1 raiz
         if (discriminante == 0)
         {
             //comparar o x obtido pela fórmula resolvente com o obtido pelo método de newton
-            double a=calculo.formulaResolvente_x1(), b=calculo.metodoNewton();
-            if((Math.Abs(a-b))>=erroComparacao)
+            double x1FR = calculo.formulaResolvente_x1(), x1MN=0, aux=0;
+            calculo.metodoNewton(ref x1MN, ref aux);
+            if((Math.Abs(x1FR-x1MN))>=erroComparacao) // se a diferença entre os valores obtidos pelos 2 métodos for superior ao erroComparacao, surge mensagem de erro
             {
-                //#############################################MENSAGEM DE ERRO --> discrepancia entre os valores calculados pelos 2 metodos
+                ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Erro de cálculo; resultado não fidedigno.');", true);
                 return;
             }
-            mostraResultado(a);
+            mostraResultado(x1FR);
             return;
         }
 
@@ -73,85 +76,53 @@ public partial class homepage : System.Web.UI.Page
         if (discriminante > 0)
         {
             //comparar x1 e x2 obtido pela fórmula resolvente com o obtido pelo método de newton
-            double a = calculo.formulaResolvente_x1(), b = calculo.metodoNewton(), c=calculo.formulaResolvente_x2(), d=calculo.metodoNewton();
-            if (((Math.Abs(a - b)) >= erroComparacao) || ((Math.Abs(a - b)) >= erroComparacao))
+            double x1FR = calculo.formulaResolvente_x1(), x1MN=0, x2FR = calculo.formulaResolvente_x2(), x2MN=0;
+            calculo.metodoNewton(ref x1MN, ref x2MN);
+            // se a diferença entre os valores obtidos pelos 2 métodos for superior ao erroComparacao, surge mensagem de erro
+            if (((Math.Abs(x1FR - x1MN)) >= erroComparacao) || ((Math.Abs(x2FR - x2MN)) >= erroComparacao))
             {
-                //#############################################MENSAGEM DE ERRO --> discrepancia entre os valores calculados pelos 2 metodos
+                ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Erro de cálculo; resultado não fidedigno.');", true);
                 return;
             }
-            mostraResultado(a, c);
+            mostraResultado(x1FR, x2FR);
             return;
-        }
-
-        //caso o parametro A seja 0 (reta)
-    //    if (a == 0 && b == 0)
-    //    {
-    //        //reta horizontal não apresenta 0´s
-    //        resultado.Text = "Reta horizontal";
-    //    }
-    //    else {
-    //              if (a == 0 && c == 0) 
-    //              { 
-    //              //reta obliqua que passa sempre em 0
-    //                  resultado.Text = "x = 0 <br />";
-    //              }
-    //              else{
-    //                  if(a==0){
-    //                          //reta obliqua com 1 zero                          
-    //                          resultado.Text = "x = " + string.Format(digitos(), calculo.FR_b(b, c)) + "<br />";                            
-    //                          }else{
-    //                                //equação tem de ser possivel
-    //                                 if (calculo.ValidaEq(a, b, c))
-    //                                 {
-    //                                 //Calculo x1 pela formula resolvente quando existem os 3 termos a, b e c
-    //                                 resultado.Text = "x1 = " + string.Format(digitos(),calculo.FR_a_x1(a, b, c)) + "<br />"
-    //                                 + "x2 = " + string.Format(digitos(),calculo.FR_a_x2(a, b, c));
-    //                                 }else { 
-    //                                        //escreve equação impossivel numa label 
-    //                                        resultado.Text = "Equação impossivel";
-    //                                       }
-
-    //                               }
-
-    //                  }
-                   
-    //        }
-       
+        } 
     }
 
     //********************************************** EVENTOS OnTextChanged ****************************************************
 
-    //Estes eventos são chamados quando o texto de uma das 3 text chama uma função auxiliar que faz a validação do que está a ser escrito na TextBox correspondente
+    //Estes eventos são accionados quando o texto de uma das 3 textboxs é alterado e chamam uma função auxiliar que faz a validação do que está a ser escrito na TextBox correspondente
     //Se tiver recebido false (a operação de conversão correu mal) --> mostra-se uma caixa de erro com o texto a dizer que só se aceitam valores numericos
-    //                                                             --> o atributo enable do botão de calcular passa a false
-    //AS MENSAGENS DE ERRO SÃO AS QUE ESTÃO DEFINIDAS NOS REQUISITOS?
     protected void TextBoxA_TextChanged(object sender, EventArgs e)
     {
-        botaoCalcular.Enabled = true;
-        if (!validar("txtA"))
+        TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
+        TextBoxA.BorderWidth = 1;
+        if (!validar(TextBoxA.Text))
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true);
-            botaoCalcular.Enabled = false;
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
+            TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
 
     }
     protected void TextBoxB_TextChanged(object sender, EventArgs e)
     {
-        botaoCalcular.Enabled = true;
-        if (!validar("txtB"))
+        TextBoxB.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
+        TextBoxB.BorderWidth = 1;
+        if (!validar(TextBoxB.Text))
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true);
-            botaoCalcular.Enabled = false;
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
+            TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
 
     }
     protected void TextBoxC_TextChanged(object sender, EventArgs e)
     {
-        botaoCalcular.Enabled = true;
-        if (!validar("txtC"))
+        TextBoxC.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
+        TextBoxC.BorderWidth = 1;
+        if (!validar(TextBoxC.Text))
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitodos valores numericos.');", true);
-            botaoCalcular.Enabled = false;
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
+            TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
 
     }
@@ -161,39 +132,25 @@ public partial class homepage : System.Web.UI.Page
     //Função validar() recebe o nove da TextBox que está a ser "utilizada" e tenta fazer a conversão para um double.
     //Se conseguir converter, guarda o valor convertido para uma variável do tipo double e retorna true (a operação correu bem)
     //Se não conseguir converter, retorna false (a operação correu mal)
-
-    //FALTA VALIDAR O TAMANHO DA STRING
+    //Se a string possuir um numero de chars superior ao permitido pela constante maxChars, retorna false.
     private bool validar(string txt)
     {
+        const int maxChars=8;
         double valor = 0;
-        if (txt.Equals("txtA"))
-        {
-            if (double.TryParse(TextBoxA.Text, out valor))
-                return true;
-        }
-        else if (txt.Equals("txtB"))
-        {
-            if (double.TryParse(TextBoxB.Text, out valor))
-                return true;
-        }
-        else if (txt.Equals("txtC"))
-        {
-            if (double.TryParse(TextBoxC.Text, out valor))
-                return true;
-        }
-        return false;
-
+        if (!double.TryParse(txt, out valor) || txt.Length>maxChars)
+           return false;
+        return true;
     }
 
     //************************************************ FUNÇÃO mostraResultado() *************************************************
     //recebe 1 ou 2 argumentos (variáveis double), constroi uma string com o resultado e mostra-a na respectiva caixa de texto.
     void mostraResultado(double x)
     {
-        resultado.Text = "<br />x = " + x;
+        resultado.Text = "<br />x = " + Math.Round(x, 4);
     }
 
     void mostraResultado(double x1, double x2)
     {
-        resultado.Text = "<br />x1 = " + x1 + "<br />x2 = " + x2;
+        resultado.Text = "<br />x1 = " + Math.Round(x1, 4) + "<br />x2 = " + Math.Round(x2, 4);
     }
 }

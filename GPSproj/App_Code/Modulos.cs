@@ -51,19 +51,6 @@ public class Calculo
         return termoC;
     }
 
-    public bool ValidaEq()
-    {
-        double valor = termoB * termoB - 4 * termoA * termoC;
-         if (valor <= 0)
-         {
-             return false;
-         }
-         else {
-              return true;
-              }
-    }
-
-
     //Calcula x1 pela formula resolvente quando: --> existem os 3 termos a, b e c são diferentes de zero,
     //                                           --> c=0 ou b=0
     //Retorna o resultado.
@@ -86,11 +73,32 @@ public class Calculo
         return -termoC / termoB;
     }
 
-    public double metodoNewton()
+    //implementação do método numérico de Newton-Rhapson
+    // Xn: valor de x considerado.
+    //Xmin: mínimo da função
+    //fXn: f(Xn)= valor da função no ponto Xn.
+    //fdXn: f'(Xn)= valor da derivada da função no ponto Xn.
+    //Xn_mais1: Xn+1= valor de Xn a ser usado na iteração seguinte
+    //erroReal: erro real do cálculo de Xn entre duas iterações consecutivas
+    //erroMax: erro máximo que serve como critério de paragem das iterações
+    public void metodoNewton(ref double x1, ref double x2)
     {
-        return 3;
-    }
+        const double erroMax = 0.001;
+        const int numIt = 10000;
+        double Xn, fXn, fdXn, Xn_mais1, erroReal = 1, Xmin;
+        Xmin = -termoB / (2 * termoA);
 
-    //gráfico
+        Xn = 0;
+        for (int i = 1; erroReal > erroMax && i < numIt; i++)
+        {
+            fXn = termoA * (Xn * Xn) + termoB * Xn + termoC;
+            fdXn = termoA * 2 * Xn + termoB;
+            Xn_mais1 = Xn - (fXn / fdXn);
+            erroReal = Math.Abs(Xn - Xn_mais1);
+            Xn = Xn_mais1;
+        }
+        x1 = Xmin + Math.Abs((Xmin - Xn));
+        x2 = Xmin - Math.Abs((Xmin - Xn));
+    }
 }
 
