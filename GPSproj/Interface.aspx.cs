@@ -102,7 +102,19 @@ public partial class homepage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
-
+        else { 
+            
+            //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
+            if (TextBoxA.Text[0] == '-')
+            {
+                labelA.Text = " - " + -1*Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
+            }
+            else
+            {
+                //escreve na interface consuante o valor a introduzido
+                labelA.Text = TextBoxA.Text + "x<sup>2</sup>";
+            }
+            }
     }
     protected void TextBoxB_TextChanged(object sender, EventArgs e)
     {
@@ -113,7 +125,19 @@ public partial class homepage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
-
+        else {
+                    //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
+                    if (TextBoxB.Text[0] == '-')
+                    {
+                        labelB.Text = " - " + -1*Int32.Parse(TextBoxB.Text) + "x"; //nao afeta a textbox
+                    }
+                    else 
+                    { 
+                    //escreve na interface consuante o valor b introduzido
+                                 labelB.Text = " + " +TextBoxB.Text+ "x"; 
+                    }
+                         
+             }
     }
     protected void TextBoxC_TextChanged(object sender, EventArgs e)
     {
@@ -124,7 +148,19 @@ public partial class homepage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
-
+        else { 
+             
+             //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
+             if (TextBoxC.Text[0] == '-')
+             {
+                 labelC.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) +" = 0"; //nao afeta a textbox
+             }
+             else
+             {
+                 //escreve na interface consuante o valor c introduzido
+                 labelC.Text = " + "+TextBoxC.Text + " = 0";
+             }
+             }
     }
 
     //************************************************ FUNÇÃO validar() *************************************************

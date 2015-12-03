@@ -20,7 +20,9 @@
             <div id="equacao" class="margemInf centrarH">
                 <div class="centrarT">
                     <div class="equacaoWrapper centrarH">
-                        <asp:Label ID="labelA" runat="server" class="subtitulo" BackColor="">ax<sup>2</sup> + bx + c = 0</asp:Label>
+                        <asp:Label ID="labelA" runat="server" class="subtitulo" BackColor="">ax<sup>2</sup> </asp:Label>
+                        <asp:Label ID="labelB" runat="server" class="subtitulo" BackColor="">+ bx </asp:Label>
+                        <asp:Label ID="labelC" runat="server" class="subtitulo" BackColor="">+ c = 0</asp:Label>
                     </div>
                 </div>
                 <div class="centrarT">
