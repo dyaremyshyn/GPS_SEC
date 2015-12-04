@@ -139,7 +139,7 @@ public partial class homepage : System.Web.UI.Page
                     else 
                     { 
                     //escreve na interface consuante o valor b introduzido
-                                 labelB.Text = " + " +TextBoxB.Text+ "x"; 
+                        labelB.Text = " + " +TextBoxB.Text+ "x"; 
                     }
                          
              }
@@ -165,12 +165,12 @@ public partial class homepage : System.Web.UI.Page
                  //escreve na interface consuante o valor c introduzido
                  labelC.Text = " + "+TextBoxC.Text + " = 0";
              }
-             }
+       }
     }
 
     //************************************************ FUNÇÃO validar() *************************************************
 
-    //Função validar() recebe o nove da TextBox que está a ser "utilizada" e tenta fazer a conversão para um double.
+    //Função validar() recebe o valor da TextBox utilizada e tenta fazer a conversão para um double.
     //Se conseguir converter, guarda o valor convertido para uma variável do tipo double e retorna true (a operação correu bem)
     //Se não conseguir converter, retorna false (a operação correu mal)
     //Se a string possuir um numero de chars superior ao permitido pela constante maxChars, retorna false.
