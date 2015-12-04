@@ -39,7 +39,6 @@
                     <asp:Label ID="resultado" runat="server" BorderWidth="1px" Height="80px" Width="516px" Text=""><br />x1=<br />x2=</asp:Label>
                 </div>
             </div>
-            <asp:Panel ID="Panel1" runat="server" Visible="false">
             <div class="titulo">GRÁFICO</div>
             <div id="grafico" class="margemInf centrarH">
                 <div class="centrarT">
@@ -47,21 +46,18 @@
                         <asp:Label ID="label2" runat="server" class="subtitulo">f(x) = ax<sup>2</sup> + bx + c </asp:Label>
                     </div>
                 </div>
-                <div class="subtitulo" style="margin-left:17px;">Resultado</div>
-                
-                <div id="areaGrafico" class="centrarH frame margemInf">
-                    <div id="calculator" style="width: 510px; height: 200px;" ></div>
+                <br />
+                    <div id="calculator" class="centrarH margemInf" style="width: 516px; height: 400px;" ></div>
                     <script type="text/javascript">
                         var elt = document.getElementById('calculator');
                         var calculator = Desmos.Calculator(elt, { keypad: false, expressions: false });
                         var equacao = '<%=getq()%>'
                         calculator.setExpression({id:'graph1', latex:equacao});
                     </script>
-                </div>
+                
                     
             </div>
         </div>
-        </asp:Panel>
     </div>
     </form>
 </body>

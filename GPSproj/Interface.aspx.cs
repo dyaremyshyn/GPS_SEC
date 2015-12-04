@@ -35,10 +35,6 @@ public partial class homepage : System.Web.UI.Page
         //inicializar um objeto da classe cálculo.
         Calculo calculo = new Calculo(TextBoxA.Text, TextBoxB.Text, TextBoxC.Text);
 
-        //Deixa a zona do gráfico visivel, assim como desenha a função
-        Panel1.Visible = true;
-
-
         //verifica se (a=0 ou b=0) e c=0, mostrando o valor de x nesse caso.
         if ((calculo.getA() == 0 || calculo.getB() == 0) && calculo.getC() == 0)
         {
