@@ -8,14 +8,16 @@ using System.Web.UI.WebControls;
 
 public partial class homepage : System.Web.UI.Page
 {
+   
     protected void Page_Load(object sender, EventArgs e)
     {
+       
     }
 
     protected void botaoCalcular_Click(object sender, EventArgs e)
     {
         const double erroComparacao=0.01;
-
+        
         if ((TextBoxA.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")) || (TextBoxB.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")) || (TextBoxC.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
@@ -33,10 +35,15 @@ public partial class homepage : System.Web.UI.Page
         //inicializar um objeto da classe cálculo.
         Calculo calculo = new Calculo(TextBoxA.Text, TextBoxB.Text, TextBoxC.Text);
 
+        //Deixa a zona do gráfico visivel, assim como desenha a função
+        Panel1.Visible = true;
+
+
         //verifica se (a=0 ou b=0) e c=0, mostrando o valor de x nesse caso.
         if ((calculo.getA() == 0 || calculo.getB() == 0) && calculo.getC() == 0)
         {
             mostraResultado(0);
+            
             return;
         }
 
@@ -86,7 +93,9 @@ public partial class homepage : System.Web.UI.Page
             }
             mostraResultado(x1FR, x2FR);
             return;
-        } 
+        }
+        
+        
     }
 
     //********************************************** EVENTOS OnTextChanged ****************************************************
@@ -188,5 +197,11 @@ public partial class homepage : System.Web.UI.Page
     void mostraResultado(double x1, double x2)
     {
         resultado.Text = "<br />x1 = " + Math.Round(x1, 4) + "<br />x2 = " + Math.Round(x2, 4);
+    }
+    public string getq()
+    {
+        Calculo calculo = new Calculo(TextBoxA.Text, TextBoxB.Text, TextBoxC.Text);
+        string eq = calculo.geteq();
+        return eq;
     }
 }

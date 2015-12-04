@@ -10,6 +10,7 @@ using System.Web;
 
 public class Calculo
 {   
+    
     double termoA, termoB, termoC;
 
     //construtor que recebe 3 strings correspondentes às caixas de texto com os termos e converte-as para números com formato double;
@@ -49,6 +50,12 @@ public class Calculo
     public double getC()
     {
         return termoC;
+    }
+
+    public string geteq()
+    {
+        string equacaostring = (getA().ToString() + 'x' + '*' + 'x' + '+' + getB().ToString() + '*' + 'x' + '+' + getC().ToString());
+        return equacaostring;
     }
 
     //Calcula x1 pela formula resolvente quando: --> existem os 3 termos a, b e c são diferentes de zero,
@@ -100,5 +107,6 @@ public class Calculo
         x1 = Xmin + Math.Abs((Xmin - Xn));
         x2 = Xmin - Math.Abs((Xmin - Xn));
     }
+    
 }
 

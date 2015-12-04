@@ -6,6 +6,7 @@
 <head runat="server">
     <title>SEC - StudEnt Calculator</title>
     <link href="../acessorios/styleFormat.css" rel="stylesheet" type="text/css"/>
+    <script src="https://www.desmos.com/api/v0.5/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -38,6 +39,7 @@
                     <asp:Label ID="resultado" runat="server" BorderWidth="1px" Height="80px" Width="516px" Text=""><br />x1=<br />x2=</asp:Label>
                 </div>
             </div>
+            <asp:Panel ID="Panel1" runat="server" Visible="false">
             <div class="titulo">GRÁFICO</div>
             <div id="grafico" class="margemInf centrarH">
                 <div class="centrarT">
@@ -46,10 +48,20 @@
                     </div>
                 </div>
                 <div class="subtitulo" style="margin-left:17px;">Resultado</div>
-                <div id="areaGrafico" class="centrarH frame margemInf">gráfico</div>
+                
+                <div id="areaGrafico" class="centrarH frame margemInf">
+                    <div id="calculator" style="width: 510px; height: 200px;" ></div>
+                    <script type="text/javascript">
+                        var elt = document.getElementById('calculator');
+                        var calculator = Desmos.Calculator(elt, { keypad: false, expressions: false });
+                        var equacao = '<%=getq()%>'
+                        calculator.setExpression({id:'graph1', latex:equacao});
+                    </script>
+                </div>
+                    
             </div>
         </div>
-
+        </asp:Panel>
     </div>
     </form>
 </body>
