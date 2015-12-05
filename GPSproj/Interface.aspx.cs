@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class homepage : System.Web.UI.Page
 {
-   
+    string  eq_valida_actual;
     protected void Page_Load(object sender, EventArgs e)
     {
        
@@ -16,7 +16,7 @@ public partial class homepage : System.Web.UI.Page
 
     protected void botaoCalcular_Click(object sender, EventArgs e)
     {
-        const double erroComparacao=0.01;
+        const double erroComparacao = 0.01;
         
         if ((TextBoxA.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")) || (TextBoxB.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")) || (TextBoxC.BorderColor == System.Drawing.ColorTranslator.FromHtml("#ff0000")))
         {
@@ -34,6 +34,18 @@ public partial class homepage : System.Web.UI.Page
 
         //inicializar um objeto da classe cálculo.
         Calculo calculo = new Calculo(TextBoxA.Text, TextBoxB.Text, TextBoxC.Text);
+
+        eq_valida_actual = calculo.geteq();
+
+
+
+        //verifica se a=0 e b=0, mostrando o valor de x nesse caso.
+        if (calculo.getA() == 0 && calculo.getB() == 0 && calculo.getC() != 0)
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('A equação indicada não possui raízes.');", true);
+            return;
+        }
+
 
         //verifica se (a=0 ou b=0) e c=0, mostrando o valor de x nesse caso.
         if ((calculo.getA() == 0 || calculo.getB() == 0) && calculo.getC() == 0)
@@ -64,9 +76,9 @@ public partial class homepage : System.Web.UI.Page
         if (discriminante == 0)
         {
             //comparar o x obtido pela fórmula resolvente com o obtido pelo método de newton
-            double x1FR = calculo.formulaResolvente_x1(), x1MN=0, aux=0;
+            double x1FR = calculo.formulaResolvente_x1(), x1MN = 0, aux = 0;
             calculo.metodoNewton(ref x1MN, ref aux);
-            if((Math.Abs(x1FR-x1MN))>=erroComparacao) // se a diferença entre os valores obtidos pelos 2 métodos for superior ao erroComparacao, surge mensagem de erro
+            if((Math.Abs(x1FR - x1MN)) >= erroComparacao) // se a diferença entre os valores obtidos pelos 2 métodos for superior ao erroComparacao, surge mensagem de erro
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Erro de cálculo; resultado não fidedigno.');", true);
                 return;
@@ -79,7 +91,7 @@ public partial class homepage : System.Web.UI.Page
         if (discriminante > 0)
         {
             //comparar x1 e x2 obtido pela fórmula resolvente com o obtido pelo método de newton
-            double x1FR = calculo.formulaResolvente_x1(), x1MN=0, x2FR = calculo.formulaResolvente_x2(), x2MN=0;
+            double x1FR = calculo.formulaResolvente_x1(), x1MN = 0, x2FR = calculo.formulaResolvente_x2(), x2MN = 0;
             calculo.metodoNewton(ref x1MN, ref x2MN);
             // se a diferença entre os valores obtidos pelos 2 métodos for superior ao erroComparacao, surge mensagem de erro
             if (((Math.Abs(x1FR - x1MN)) >= erroComparacao) || ((Math.Abs(x2FR - x2MN)) >= erroComparacao))
@@ -91,6 +103,8 @@ public partial class homepage : System.Web.UI.Page
             return;
         }
         
+        
+          
         
     }
 
@@ -109,16 +123,16 @@ public partial class homepage : System.Web.UI.Page
         }
         else { 
             
-            //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
-            if (TextBoxA.Text[0] == '-')
-            {
-                labelA.Text = " - " + -1*Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
-            }
-            else
-            {
-                //escreve na interface consuante o valor a introduzido
-                labelA.Text = TextBoxA.Text + "x<sup>2</sup>";
-            }
+                    //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
+                    if (TextBoxA.Text[0] == '-')
+                    {
+                        labelA.Text = " - " + -1*Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
+                    }
+                    else
+                    {
+                        //escreve na interface consuante o valor a introduzido
+                        labelA.Text = TextBoxA.Text + "x<sup>2</sup>";
+                    }
             }
     }
     protected void TextBoxB_TextChanged(object sender, EventArgs e)
@@ -128,7 +142,7 @@ public partial class homepage : System.Web.UI.Page
         if (!validar(TextBoxB.Text))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
-            TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
+            TextBoxB.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
         else {
                     //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
@@ -139,7 +153,7 @@ public partial class homepage : System.Web.UI.Page
                     else 
                     { 
                     //escreve na interface consuante o valor b introduzido
-                        labelB.Text = " + " +TextBoxB.Text+ "x"; 
+                        labelB.Text = " + " + TextBoxB.Text + "x"; 
                     }
                          
              }
@@ -151,19 +165,19 @@ public partial class homepage : System.Web.UI.Page
         if (!validar(TextBoxC.Text))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
-            TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
+            TextBoxC.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
         else { 
              
              //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
              if (TextBoxC.Text[0] == '-')
              {
-                 labelC.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) +" = 0"; //nao afeta a textbox
+                 labelC.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) + " = 0"; //nao afeta a textbox
              }
              else
              {
                  //escreve na interface consuante o valor c introduzido
-                 labelC.Text = " + "+TextBoxC.Text + " = 0";
+                 labelC.Text = " + " + TextBoxC.Text + " = 0";
              }
        }
     }
@@ -176,9 +190,9 @@ public partial class homepage : System.Web.UI.Page
     //Se a string possuir um numero de chars superior ao permitido pela constante maxChars, retorna false.
     private bool validar(string txt)
     {
-        const int maxChars=8;
+        const int maxChars = 8;
         double valor = 0;
-        if (!double.TryParse(txt, out valor) || txt.Length>maxChars)
+        if (!double.TryParse(txt, out valor) || txt.Length > maxChars)
            return false;
         return true;
     }
@@ -194,10 +208,10 @@ public partial class homepage : System.Web.UI.Page
     {
         resultado.Text = "<br />x1 = " + Math.Round(x1, 4) + "<br />x2 = " + Math.Round(x2, 4);
     }
+
     public string getq()
     {
-        Calculo calculo = new Calculo(TextBoxA.Text, TextBoxB.Text, TextBoxC.Text);
-        string eq = calculo.geteq();
-        return eq;
+        return eq_valida_actual;
     }
+    
 }

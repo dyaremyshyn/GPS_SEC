@@ -10,7 +10,7 @@ using System.Web;
 
 public class Calculo
 {   
-    
+    //são variaveis privadas
     double termoA, termoB, termoC;
 
     //construtor que recebe 3 strings correspondentes às caixas de texto com os termos e converte-as para números com formato double;
@@ -32,6 +32,7 @@ public class Calculo
         }
 
         //guarda os valores nos respetivos campos
+        //estes valores(stringA,stringB,stringC) são valores verificados externamente.
         termoA = Convert.ToDouble(stringA);
         termoB = Convert.ToDouble(stringB);
         termoC = Convert.ToDouble(stringC);
@@ -81,13 +82,14 @@ public class Calculo
     }
 
     //implementação do método numérico de Newton-Rhapson
-    // Xn: valor de x considerado.
+    //Xn: valor de x considerado.
     //Xmin: mínimo da função
     //fXn: f(Xn)= valor da função no ponto Xn.
     //fdXn: f'(Xn)= valor da derivada da função no ponto Xn.
     //Xn_mais1: Xn+1= valor de Xn a ser usado na iteração seguinte
     //erroReal: erro real do cálculo de Xn entre duas iterações consecutivas
     //erroMax: erro máximo que serve como critério de paragem das iterações
+    //x1,x2 são variaveis verificadas externamente para evitar conflitos nos calculos.
     public void metodoNewton(ref double x1, ref double x2)
     {
         const double erroMax = 0.001;
