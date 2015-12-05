@@ -121,19 +121,10 @@ public partial class homepage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
-        else { 
-            
-                    //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
-                    if (TextBoxA.Text[0] == '-')
-                    {
-                        labelA.Text = " - " + -1*Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
-                    }
-                    else
-                    {
-                        //escreve na interface consuante o valor a introduzido
-                        labelA.Text = TextBoxA.Text + "x<sup>2</sup>";
-                    }
-            }
+        else 
+        {
+        escreve_parametro("TextBoxA");                       
+        }
     }
     protected void TextBoxB_TextChanged(object sender, EventArgs e)
     {
@@ -144,19 +135,10 @@ public partial class homepage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxB.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
-        else {
-                    //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
-                    if (TextBoxB.Text[0] == '-')
-                    {
-                        labelB.Text = " - " + -1*Int32.Parse(TextBoxB.Text) + "x"; //nao afeta a textbox
-                    }
-                    else 
-                    { 
-                    //escreve na interface consuante o valor b introduzido
-                        labelB.Text = " + " + TextBoxB.Text + "x"; 
-                    }
-                         
-             }
+        else 
+        {
+        escreve_parametro("TextBoxB");    
+        }
     }
     protected void TextBoxC_TextChanged(object sender, EventArgs e)
     {
@@ -167,19 +149,61 @@ public partial class homepage : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxC.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
-        else { 
-             
-             //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
-             if (TextBoxC.Text[0] == '-')
-             {
-                 labelC.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) + " = 0"; //nao afeta a textbox
-             }
-             else
-             {
-                 //escreve na interface consuante o valor c introduzido
-                 labelC.Text = " + " + TextBoxC.Text + " = 0";
-             }
-       }
+        else 
+        {
+        escreve_parametro("TextBoxC");                      
+        }
+    }
+
+
+    //escreve parametros consuante o que for introduzido(valores numericos negativos ou positivos) 
+    protected void escreve_parametro(string TEXT_ALVO)
+    {
+        if (TEXT_ALVO == "TextBoxA")
+        {
+            //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
+            if (TextBoxA.Text[0] == '-')
+            {
+                labelA.Text = " - " + -1 * Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
+            }
+            else
+            {
+                //escreve na interface consuante o valor a introduzido
+                labelA.Text = TextBoxA.Text + "x<sup>2</sup>";
+            }
+        }
+        else
+        {
+            if (TEXT_ALVO == "TextBoxB")
+            {
+                //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
+                if (TextBoxB.Text[0] == '-')
+                {
+                    labelB.Text = " - " + -1 * Int32.Parse(TextBoxB.Text) + "x"; //nao afeta a textbox
+                }
+                else
+                {
+                    //escreve na interface consuante o valor b introduzido
+                    labelB.Text = " + " + TextBoxB.Text + "x";
+                }
+            }
+            else
+            {
+                if (TEXT_ALVO == "TextBoxC")
+                {
+                    //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
+                    if (TextBoxC.Text[0] == '-')
+                    {
+                        labelC.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) + " = 0"; //nao afeta a textbox
+                    }
+                    else
+                    {
+                        //escreve na interface consuante o valor c introduzido
+                        labelC.Text = " + " + TextBoxC.Text + " = 0";
+                    }
+                }
+            }
+        }
     }
 
     //************************************************ FUNÇÃO validar() *************************************************
