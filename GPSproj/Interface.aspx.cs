@@ -165,11 +165,13 @@ public partial class homepage : System.Web.UI.Page
             if (TextBoxA.Text[0] == '-')
             {
                 labelA.Text = " - " + -1 * Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
+                labelA1.Text = " - " + -1 * Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
             }
             else
             {
                 //escreve na interface consuante o valor a introduzido
                 labelA.Text = TextBoxA.Text + "x<sup>2</sup>";
+                labelA1.Text = TextBoxA.Text + "x<sup>2</sup>";
             }
         }
         else
@@ -180,11 +182,13 @@ public partial class homepage : System.Web.UI.Page
                 if (TextBoxB.Text[0] == '-')
                 {
                     labelB.Text = " - " + -1 * Int32.Parse(TextBoxB.Text) + "x"; //nao afeta a textbox
+                    labelB1.Text = " - " + -1 * Int32.Parse(TextBoxB.Text) + "x"; //nao afeta a textbox
                 }
                 else
                 {
                     //escreve na interface consuante o valor b introduzido
                     labelB.Text = " + " + TextBoxB.Text + "x";
+                    labelB1.Text = " + " + TextBoxB.Text + "x";
                 }
             }
             else
@@ -195,11 +199,13 @@ public partial class homepage : System.Web.UI.Page
                     if (TextBoxC.Text[0] == '-')
                     {
                         labelC.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) + " = 0"; //nao afeta a textbox
+                        labelC1.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) ; //nao afeta a textbox
                     }
                     else
                     {
                         //escreve na interface consuante o valor c introduzido
                         labelC.Text = " + " + TextBoxC.Text + " = 0";
+                        labelC1.Text = " + " + TextBoxC.Text;
                     }
                 }
             }

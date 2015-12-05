@@ -12,7 +12,7 @@
     <form id="form1" runat="server">
     <div class="centrarWrappers">
         <div id="logo" class="centrarH margemInf centrarT">
-            <div id="logo2">logo</div>
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/logo1.png" Width="200" Height="130" />
         </div>
     </div>
     <div class="centrarWrappers">
@@ -43,7 +43,10 @@
             <div id="grafico" class="margemInf centrarH">
                 <div class="centrarT">
                     <div class="equacaoWrapper centrarH" style="margin-bottom:5px;">
-                        <asp:Label ID="label2" runat="server" class="subtitulo">f(x) = ax<sup>2</sup> + bx + c </asp:Label>
+                        <asp:Label ID="label2" runat="server" class="subtitulo">f(x) = </asp:Label>
+                        <asp:Label ID="labelA1" runat="server" class="subtitulo" BackColor="">ax<sup>2</sup> </asp:Label>
+                        <asp:Label ID="labelB1" runat="server" class="subtitulo" BackColor="">+ bx </asp:Label>
+                        <asp:Label ID="labelC1" runat="server" class="subtitulo" BackColor="">+ c </asp:Label>
                     </div>
                 </div>
                 <br />
