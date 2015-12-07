@@ -17,7 +17,7 @@ public class Calculo
     //de seguida coloca-os nos respectivos campos da class (double a, b e c) correspondentes aos termos a, b e c da equação.
     public Calculo(string stringA, string stringB, string stringC)
     {
-        // testar se alguma das caixas de texto está vazia, ou eja,  possui uma string vazia, substituindo-a por 0
+        // testar se alguma das caixas de texto está vazia, ou seja,  possui uma string vazia, substituindo-a por 0
         if (stringA.Equals(""))
         {
             stringA = "0";
@@ -56,6 +56,9 @@ public class Calculo
     public string geteq()
     {
         string equacaostring = (getA().ToString() + 'x' + '*' + 'x' + '+' + getB().ToString() + '*' + 'x' + '+' + getC().ToString());
+        
+        equacaostring=equacaostring.Replace(",", ".");
+       
         return equacaostring;
     }
 

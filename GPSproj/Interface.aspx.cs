@@ -222,6 +222,8 @@ public partial class homepage : System.Web.UI.Page
     {
         const int maxChars = 8;
         double valor = 0;
+        if (txt == "")
+            return true;
         if (!double.TryParse(txt, out valor) || txt.Length > maxChars)
            return false;
         return true;
