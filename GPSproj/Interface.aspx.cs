@@ -161,6 +161,12 @@ public partial class homepage : System.Web.UI.Page
     {
         if (TEXT_ALVO == "TextBoxA")
         {
+            if (TextBoxA.Text == "") 
+            { 
+                labelA.Text = "0x<sup>2</sup>";
+                labelA1.Text = "0x<sup>2</sup>";
+                return;
+            }
             //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
             if (TextBoxA.Text[0] == '-')
             {
@@ -178,6 +184,12 @@ public partial class homepage : System.Web.UI.Page
         {
             if (TEXT_ALVO == "TextBoxB")
             {
+                if (TextBoxB.Text == "")
+                {
+                    labelB.Text = " + " + "0x";
+                    labelB1.Text = " + " + "0x";
+                    return;
+                }
                 //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
                 if (TextBoxB.Text[0] == '-')
                 {
@@ -195,6 +207,12 @@ public partial class homepage : System.Web.UI.Page
             {
                 if (TEXT_ALVO == "TextBoxC")
                 {
+                    if (TextBoxC.Text == "")
+                    {
+                        labelC.Text = " + 0 = 0";
+                        labelC1.Text = " + 0";
+                        return;
+                    }
                     //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
                     if (TextBoxC.Text[0] == '-')
                     {
