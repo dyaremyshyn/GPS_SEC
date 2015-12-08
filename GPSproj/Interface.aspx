@@ -12,7 +12,7 @@
     <form id="form1" runat="server">
     <div class="centrarWrappers">
         <div id="logo" class="centrarH margemInf centrarT">
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/logo1.png" Width="200" Height="130" />
+            <div id="logo2"></div>
         </div>
     </div>
     <div class="centrarWrappers">

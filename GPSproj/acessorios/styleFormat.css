@@ -47,17 +47,17 @@
 
 #logo{
     background-color:#45c8dc; /*#3eb4c6*/
-    height:80px;
+    height:125px;
     width:600px;
     margin-bottom:0;
 }
 
 #logo2{
     display:inline-block;
-    background-color:#f7f8f8;
-    width:100px;
-    height:60px;
-    margin-top:10px;
+    width:217px;
+    height:110px;
+    margin-bottom:10px;
+    background-image: url('../acessorios/logo1.png');
 }
 
 #equacao{
