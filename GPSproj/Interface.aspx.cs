@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -11,7 +12,16 @@ public partial class homepage : System.Web.UI.Page
     string  eq_valida_actual;
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        if (!IsPostBack)
+        {
+            TextBoxA.Text = "1";
+            TextBoxB.Text = "2";
+            TextBoxC.Text = "-3";
+            TextBoxA_TextChanged(null, EventArgs.Empty);
+            TextBoxB_TextChanged(null, EventArgs.Empty);
+            TextBoxC_TextChanged(null, EventArgs.Empty);
+            botaoCalcular_Click(null, EventArgs.Empty);
+        }
     }
 
     protected void botaoCalcular_Click(object sender, EventArgs e)
@@ -248,12 +258,12 @@ public partial class homepage : System.Web.UI.Page
     //recebe 1 ou 2 argumentos (variáveis double), constroi uma string com o resultado e mostra-a na respectiva caixa de texto.
     void mostraResultado(double x)
     {
-        resultado.Text = "<br />x = " + Math.Round(x, 4);
+        resultado.Text = "x = " + Math.Round(x, 4);
     }
 
     void mostraResultado(double x1, double x2)
     {
-        resultado.Text = "<br />x1 = " + Math.Round(x1, 4) + "<br />x2 = " + Math.Round(x2, 4);
+        resultado.Text = "x1 = " + Math.Round(x1, 4) + "<br />x2 = " + Math.Round(x2, 4) ;
     }
 
     public string getq()

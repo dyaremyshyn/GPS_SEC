@@ -36,7 +36,11 @@
                 </div>
                 <div class="subtitulo" style="margin-left:17px;">Resultado</div>
                 <div class="centrarT">
-                    <asp:Label ID="resultado" runat="server" BorderWidth="1px" Height="80px" Width="516px" Text=""><br />x1=<br />x2=</asp:Label>
+                    <div style="border:1px solid black; background-color:#f7f8f8; Width:516px; display:inline-block;">
+                        <div style="margin-top:10px; margin-bottom:10px;">
+                            <asp:Label ID="resultado" runat="server"  Text=""></asp:Label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="titulo">GRÁFICO</div>
