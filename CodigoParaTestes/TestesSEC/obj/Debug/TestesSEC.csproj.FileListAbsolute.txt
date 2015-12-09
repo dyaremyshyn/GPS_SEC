@@ -1,0 +1,7 @@
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\TestesSEC\bin\Debug\TestesSEC.dll
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\TestesSEC\bin\Debug\TestesSEC.pdb
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\TestesSEC\bin\Debug\CodigoParaTestes.exe
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\TestesSEC\bin\Debug\CodigoParaTestes.pdb
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\TestesSEC\obj\Debug\TestesSEC.csprojResolveAssemblyReference.cache
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\TestesSEC\obj\Debug\TestesSEC.dll
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\TestesSEC\obj\Debug\TestesSEC.pdb

@@ -1,1 +1,12 @@
 C:\Users\Pedro Camacho\Documents\GitHub\GPS_SEC\CodigoParaTestes\CodigoParaTestes\bin\Debug\CodigoParaTestes.exe.config
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\CodigoParaTestes\bin\Debug\CodigoParaTestes.exe.config
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\CodigoParaTestes\bin\Debug\CodigoParaTestes.exe
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\CodigoParaTestes\bin\Debug\CodigoParaTestes.pdb
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\CodigoParaTestes\obj\Debug\CodigoParaTestes.csprojResolveAssemblyReference.cache
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\CodigoParaTestes\obj\Debug\CodigoParaTestes.Properties.Resources.resources
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\CodigoParaTestes\obj\Debug\CodigoParaTestes.csproj.GenerateResource.Cache
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\CodigoParaTestes\obj\Debug\CodigoParaTestes.exe
+C:\Users\Utilizador\Desktop\GPS_SEC\CodigoParaTestes\CodigoParaTestes\obj\Debug\CodigoParaTestes.pdb
+C:\Users\Utilizador\Desktop\CodigoParaTestes\CodigoParaTestes\bin\Debug\CodigoParaTestes.exe.config
+C:\Users\Utilizador\Desktop\CodigoParaTestes\CodigoParaTestes\obj\Debug\CodigoParaTestes.exe
+C:\Users\Utilizador\Desktop\CodigoParaTestes\CodigoParaTestes\obj\Debug\CodigoParaTestes.pdb
