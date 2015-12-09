@@ -37,12 +37,10 @@ public partial class homepage : System.Web.UI.Page
 
         eq_valida_actual = calculo.geteq();
 
-
-
-        //verifica se a=0 e b=0, mostrando o valor de x nesse caso.
+        //verifica se a=0 e b=0.
         if (calculo.getA() == 0 && calculo.getB() == 0 && calculo.getC() != 0)
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('A equação indicada não possui raízes.');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Os valores introduzidos não constituem uma equação.');", true);
             return;
         }
 
