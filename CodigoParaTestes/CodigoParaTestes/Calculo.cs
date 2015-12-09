@@ -361,7 +361,7 @@ namespace CodigoParaTestes
 
             //inicializar um objeto da classe cálculo.
             //Calculo calculo = new Calculo(TextBoxA.Text, TextBoxB.Text, TextBoxC.Text);
-            eq_valida_actual = geteq();
+            eq_valida_actual = "vazio";
 
             //verifica se a=0 e b=0, mostrando o valor de x nesse caso.
             if (getA() == 0 && getB() == 0 && getC() != 0)
@@ -369,6 +369,8 @@ namespace CodigoParaTestes
                 aviso="os valores introduzidos não constituem uma equação";
                 return;
             }
+
+            eq_valida_actual = geteq();
 
             //verifica se (a=0 ou b=0) e c=0, mostrando o valor de x nesse caso.
             if ((getA() == 0 || getB() == 0) && getC() == 0)

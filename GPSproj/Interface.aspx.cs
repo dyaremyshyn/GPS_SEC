@@ -35,8 +35,6 @@ public partial class homepage : System.Web.UI.Page
         //inicializar um objeto da classe cálculo.
         Calculo calculo = new Calculo(TextBoxA.Text, TextBoxB.Text, TextBoxC.Text);
 
-        eq_valida_actual = calculo.geteq();
-
         //verifica se a=0 e b=0.
         if (calculo.getA() == 0 && calculo.getB() == 0 && calculo.getC() != 0)
         {
@@ -44,6 +42,7 @@ public partial class homepage : System.Web.UI.Page
             return;
         }
 
+        eq_valida_actual = calculo.geteq();
 
         //verifica se (a=0 ou b=0) e c=0, mostrando o valor de x nesse caso.
         if ((calculo.getA() == 0 || calculo.getB() == 0) && calculo.getC() == 0)

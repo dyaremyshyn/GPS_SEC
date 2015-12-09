@@ -234,5 +234,38 @@ namespace TestesSEC
             calculo.botaoCalcular_Click(null, EventArgs.Empty);
             Assert.AreEqual("-5x*x+-2*x+-1", calculo.getEqValidaActual());
         }
+
+        [TestMethod]
+        [TestCategory("calcular()")]
+        public void eq_valida_actual2()
+        {
+            var calculo = new Calculo("0", "-2", "0");
+            calculo.setCaixas("0", "-2", "0");
+            calculo.setCaixasCor("normal", "normal", "normal");
+            calculo.botaoCalcular_Click(null, EventArgs.Empty);
+            Assert.AreEqual("0x*x+-2*x+0", calculo.getEqValidaActual());
+        }
+
+        [TestMethod]
+        [TestCategory("calcular()")]
+        public void eq_valida_actual3()
+        {
+            var calculo = new Calculo("3", "0", "0");
+            calculo.setCaixas("3", "0", "0");
+            calculo.setCaixasCor("normal", "normal", "normal");
+            calculo.botaoCalcular_Click(null, EventArgs.Empty);
+            Assert.AreEqual("3x*x+0*x+0", calculo.getEqValidaActual());
+        }
+
+        [TestMethod]
+        [TestCategory("calcular()")]
+        public void eq_valida_actual4()
+        {
+            var calculo = new Calculo("0", "0", "3");
+            calculo.setCaixas("0", "0", "3");
+            calculo.setCaixasCor("normal", "normal", "normal");
+            calculo.botaoCalcular_Click(null, EventArgs.Empty);
+            Assert.AreEqual("vazio", calculo.getEqValidaActual());
+        }
     }
 }
