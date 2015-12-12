@@ -33,9 +33,9 @@ public class Calculo
 
         //guarda os valores nos respetivos campos
         //estes valores(stringA,stringB,stringC) são valores verificados externamente.
-        termoA = Convert.ToDouble(stringA);
-        termoB = Convert.ToDouble(stringB);
-        termoC = Convert.ToDouble(stringC);
+        termoA = Convert.ToDouble(stringA.Replace(".", ","));
+        termoB = Convert.ToDouble(stringB.Replace(".", ","));
+        termoC = Convert.ToDouble(stringC.Replace(".", ","));
     }
 
     public double getA()

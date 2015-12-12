@@ -122,11 +122,13 @@ public partial class homepage : System.Web.UI.Page
     //Se tiver recebido false (a operação de conversão correu mal) --> mostra-se uma caixa de erro com o texto a dizer que só se aceitam valores numericos
     protected void TextBoxA_TextChanged(object sender, EventArgs e)
     {
+        string alterada;
         TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxA.BorderWidth = 1;
         resultado.Text = "<br/>";
         eq_valida_actual = "";
-        if (!validar(TextBoxA.Text))
+        alterada = TextBoxA.Text.Replace(".", ",");
+        if (!validar(alterada))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
@@ -139,11 +141,13 @@ public partial class homepage : System.Web.UI.Page
     }
     protected void TextBoxB_TextChanged(object sender, EventArgs e)
     {
+        string alterada;
         TextBoxB.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxB.BorderWidth = 1;
         resultado.Text = "<br/>";
         eq_valida_actual = "";
-        if (!validar(TextBoxB.Text))
+        alterada = TextBoxB.Text.Replace(".", ",");
+        if (!validar(alterada))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxB.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
@@ -155,11 +159,13 @@ public partial class homepage : System.Web.UI.Page
     }
     protected void TextBoxC_TextChanged(object sender, EventArgs e)
     {
+        string alterada;
         TextBoxC.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxC.BorderWidth = 1;
         resultado.Text = "<br/>";
         eq_valida_actual = "";
-        if (!validar(TextBoxC.Text))
+        alterada = TextBoxC.Text.Replace(".", ",");
+        if (!validar(alterada))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxC.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
