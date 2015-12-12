@@ -76,6 +76,7 @@ public partial class homepage : System.Web.UI.Page
         if (discriminante < 0)
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('A equação indicada não possui raízes.');", true);
+            resultado.Text="<br/>";
             return;
         }
 
@@ -123,10 +124,12 @@ public partial class homepage : System.Web.UI.Page
     {
         TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxA.BorderWidth = 1;
+        resultado.Text = "<br/>";
         if (!validar(TextBoxA.Text))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
             TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
+            
         }
         else 
         {
@@ -137,6 +140,7 @@ public partial class homepage : System.Web.UI.Page
     {
         TextBoxB.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxB.BorderWidth = 1;
+        resultado.Text = "<br/>";
         if (!validar(TextBoxB.Text))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
@@ -151,6 +155,7 @@ public partial class homepage : System.Web.UI.Page
     {
         TextBoxC.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxC.BorderWidth = 1;
+        resultado.Text = "<br/>";
         if (!validar(TextBoxC.Text))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
