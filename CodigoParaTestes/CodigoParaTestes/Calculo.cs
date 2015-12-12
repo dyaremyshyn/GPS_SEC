@@ -235,6 +235,7 @@ namespace CodigoParaTestes
         //escreve parametros consuante o que for introduzido(valores numericos negativos ou positivos) 
         public void escreve_parametro(string TEXT_ALVO)
         {
+            double valor = 0;
             if (TEXT_ALVO == "TextBoxA")
             {
                 if (caixaA.Equals(""))
@@ -246,8 +247,9 @@ namespace CodigoParaTestes
                 //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
                 if (caixaA[0] == '-')
                 {
-                    labelA = " - " + -1 * Int32.Parse(caixaA) + "x<sup>2</sup>"; //nao afeta a textbox
-                    labelA1 = " - " + -1 * Int32.Parse(caixaA) + "x<sup>2</sup>"; //nao afeta a textbox
+                    double.TryParse(caixaA, out valor);
+                    labelA = " - " + -1 * valor  + "x<sup>2</sup>"; //nao afeta a textbox
+                    labelA1 = " - " + -1 * valor + "x<sup>2</sup>"; //nao afeta a textbox
                 }
                 else
                 {
@@ -269,8 +271,9 @@ namespace CodigoParaTestes
                     //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
                     if (caixaB[0] == '-')
                     {
-                        labelB = " - " + -1 * Int32.Parse(caixaB) + "x"; //nao afeta a textbox
-                        labelB1 = " - " + -1 * Int32.Parse(caixaB) + "x"; //nao afeta a textbox
+                        double.TryParse(caixaB, out valor);
+                        labelB = " - " + -1 * valor + "x"; //nao afeta a textbox
+                        labelB1 = " - " + -1 * valor + "x"; //nao afeta a textbox
                     }
                     else
                     {
@@ -292,8 +295,9 @@ namespace CodigoParaTestes
                         //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
                         if (caixaC[0] == '-')
                         {
-                            labelC = " - " + -1 * Int32.Parse(caixaC) + " = 0"; //nao afeta a textbox
-                            labelC1 = " - " + -1 * Int32.Parse(caixaC); //nao afeta a textbox
+                            double.TryParse(caixaC, out valor);
+                            labelC = " - " + -1 * valor + " = 0"; //nao afeta a textbox
+                            labelC1 = " - " + -1 * valor; //nao afeta a textbox
                         }
                         else
                         {

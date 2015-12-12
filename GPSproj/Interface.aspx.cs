@@ -174,6 +174,7 @@ public partial class homepage : System.Web.UI.Page
     //escreve parametros consuante o que for introduzido(valores numericos negativos ou positivos) 
     protected void escreve_parametro(string TEXT_ALVO)
     {
+        double valor=0;
         if (TEXT_ALVO == "TextBoxA")
         {
             if (TextBoxA.Text == "") 
@@ -185,8 +186,9 @@ public partial class homepage : System.Web.UI.Page
             //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
             if (TextBoxA.Text[0] == '-')
             {
-                labelA.Text = " - " + -1 * Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
-                labelA1.Text = " - " + -1 * Int32.Parse(TextBoxA.Text) + "x<sup>2</sup>"; //nao afeta a textbox
+                double.TryParse(TextBoxA.Text, out valor);
+                labelA.Text = " - " + -1 * valor + "x<sup>2</sup>"; //nao afeta a textbox
+                labelA1.Text = " - " + -1 * valor + "x<sup>2</sup>"; //nao afeta a textbox
             }
             else
             {
@@ -208,8 +210,9 @@ public partial class homepage : System.Web.UI.Page
                 //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
                 if (TextBoxB.Text[0] == '-')
                 {
-                    labelB.Text = " - " + -1 * Int32.Parse(TextBoxB.Text) + "x"; //nao afeta a textbox
-                    labelB1.Text = " - " + -1 * Int32.Parse(TextBoxB.Text) + "x"; //nao afeta a textbox
+                    double.TryParse(TextBoxB.Text, out valor);
+                    labelB.Text = " - " + -1 * valor + "x"; //nao afeta a textbox
+                    labelB1.Text = " - " + -1 * valor + "x"; //nao afeta a textbox
                 }
                 else
                 {
@@ -231,8 +234,9 @@ public partial class homepage : System.Web.UI.Page
                     //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
                     if (TextBoxC.Text[0] == '-')
                     {
-                        labelC.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) + " = 0"; //nao afeta a textbox
-                        labelC1.Text = " - " + -1 * Int32.Parse(TextBoxC.Text) ; //nao afeta a textbox
+                        double.TryParse(TextBoxC.Text, out valor);
+                        labelC.Text = " - " + -1 * valor + " = 0"; //nao afeta a textbox
+                        labelC1.Text = " - " + -1 * valor ; //nao afeta a textbox
                     }
                     else
                     {

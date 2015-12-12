@@ -345,6 +345,22 @@ namespace CodigoParaTestes.Tests
             Assert.AreEqual(calculo.validar("-23456789"), true);
         }
 
+        [TestMethod()]
+        [TestCategory("validar()")]
+        public void validarDecimal()
+        {
+            var calculo = new Calculo();
+            Assert.AreEqual(calculo.validar("12,45"), true);
+        }
+
+        [TestMethod()]
+        [TestCategory("validar()")]
+        public void validarDecimalNegativo()
+        {
+            var calculo = new Calculo();
+            Assert.AreEqual(calculo.validar("-12,45"), true);
+        }
+
         //***************************************************************************************************************************************************
         //************************************************************************ TESTAR mostraResultado() **********************************************
         //***************************************************************************************************************************************************
@@ -443,6 +459,20 @@ namespace CodigoParaTestes.Tests
             Assert.AreEqual(calculo.getlabelA(), " + 0x");
             Assert.AreEqual(calculo.getlabelB(), " + " + "0" + "x");
             Assert.AreEqual(calculo.getlabelC(), " + " + "0" + " = 0");
+        }
+
+        [TestMethod()]
+        [TestCategory("escreve_parametro()")]
+        public void escreve_parametroDecimaisCaixasVazias()
+        {
+            var calculo = new Calculo();
+            calculo.setCaixas("-12,45", "-3,456", "-2,2");
+            calculo.escreve_parametro("TextBoxA");
+            calculo.escreve_parametro("TextBoxB");
+            calculo.escreve_parametro("TextBoxC");
+            Assert.AreEqual(" - 12,45" + "x<sup>2</sup>", calculo.getlabelA());
+            Assert.AreEqual(calculo.getlabelB(), " - " + "3,456" + "x");
+            Assert.AreEqual(calculo.getlabelC(), " - " + "2,2" + " = 0");
         }
     }
 }
