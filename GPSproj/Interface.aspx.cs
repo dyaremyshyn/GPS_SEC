@@ -125,6 +125,7 @@ public partial class homepage : System.Web.UI.Page
         TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxA.BorderWidth = 1;
         resultado.Text = "<br/>";
+        eq_valida_actual = "";
         if (!validar(TextBoxA.Text))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
@@ -141,6 +142,7 @@ public partial class homepage : System.Web.UI.Page
         TextBoxB.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxB.BorderWidth = 1;
         resultado.Text = "<br/>";
+        eq_valida_actual = "";
         if (!validar(TextBoxB.Text))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
@@ -156,6 +158,7 @@ public partial class homepage : System.Web.UI.Page
         TextBoxC.BorderColor = System.Drawing.ColorTranslator.FromHtml("#A9A9A9");
         TextBoxC.BorderWidth = 1;
         resultado.Text = "<br/>";
+        eq_valida_actual = "";
         if (!validar(TextBoxC.Text))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
@@ -250,10 +253,12 @@ public partial class homepage : System.Web.UI.Page
     //Se a string possuir um numero de chars superior ao permitido pela constante maxChars, retorna false.
     private bool validar(string txt)
     {
-        const int maxChars = 8;
+        int maxChars = 8;
         double valor = 0;
         if (txt == "")
             return true;
+        if (txt[0].Equals('+') || txt[0].Equals('-'))
+            maxChars = 9;
         if (!double.TryParse(txt, out valor) || txt.Length > maxChars)
            return false;
         return true;

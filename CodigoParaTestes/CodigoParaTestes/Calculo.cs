@@ -198,10 +198,15 @@ namespace CodigoParaTestes
 
         public bool validar(string txt)
         {
-            const int maxChars = 8;
+            int maxChars = 8;
             double valor = 0;
-            if (txt == "")
+            if (txt == "") { 
                 return true;
+            }
+            if (txt[0].Equals('+') || txt[0].Equals('-'))
+            {
+                maxChars = 9;
+            }
             if (!double.TryParse(txt, out valor) || txt.Length > maxChars)
                 return false;
             return true;
