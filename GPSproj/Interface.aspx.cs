@@ -127,7 +127,7 @@ public partial class homepage : System.Web.UI.Page
         TextBoxA.BorderWidth = 1;
         resultado.Text = "<br/>";
         eq_valida_actual = "";
-        alterada = TextBoxA.Text.Replace(".", ",");
+        alterada = TextBoxA.Text.Replace('.', ',');
         if (!validar(alterada))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
@@ -146,7 +146,7 @@ public partial class homepage : System.Web.UI.Page
         TextBoxB.BorderWidth = 1;
         resultado.Text = "<br/>";
         eq_valida_actual = "";
-        alterada = TextBoxB.Text.Replace(".", ",");
+        alterada = TextBoxB.Text.Replace('.', ',');
         if (!validar(alterada))
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
@@ -180,75 +180,80 @@ public partial class homepage : System.Web.UI.Page
     //escreve parametros consuante o que for introduzido(valores numericos negativos ou positivos) 
     protected void escreve_parametro(string TEXT_ALVO)
     {
+        string alterada;
         double valor=0;
         if (TEXT_ALVO == "TextBoxA")
         {
-            if (TextBoxA.Text == "") 
+            alterada = TextBoxA.Text.Replace('.', ',');
+
+            if (alterada == "") 
             { 
                 labelA.Text = "0x<sup>2</sup>";
                 labelA1.Text = "0x<sup>2</sup>";
                 return;
             }
             //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
-            if (TextBoxA.Text[0] == '-')
+            if (alterada[0] == '-')
             {
-                double.TryParse(TextBoxA.Text, out valor);
+                double.TryParse(alterada, out valor);
                 labelA.Text = " - " + -1 * valor + "x<sup>2</sup>"; //nao afeta a textbox
                 labelA1.Text = " - " + -1 * valor + "x<sup>2</sup>"; //nao afeta a textbox
             }
             else
             {
                 //escreve na interface consuante o valor a introduzido
-                labelA.Text = TextBoxA.Text + "x<sup>2</sup>";
-                labelA1.Text = TextBoxA.Text + "x<sup>2</sup>";
+                labelA.Text = alterada + "x<sup>2</sup>";
+                labelA1.Text = alterada + "x<sup>2</sup>";
             }
         }
         else
         {
             if (TEXT_ALVO == "TextBoxB")
             {
-                if (TextBoxB.Text == "")
+                alterada = TextBoxB.Text.Replace('.', ',');
+                if (alterada == "")
                 {
                     labelB.Text = " + " + "0x";
                     labelB1.Text = " + " + "0x";
                     return;
                 }
                 //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
-                if (TextBoxB.Text[0] == '-')
+                if (alterada[0] == '-')
                 {
-                    double.TryParse(TextBoxB.Text, out valor);
+                    double.TryParse(alterada, out valor);
                     labelB.Text = " - " + -1 * valor + "x"; //nao afeta a textbox
                     labelB1.Text = " - " + -1 * valor + "x"; //nao afeta a textbox
                 }
                 else
                 {
                     //escreve na interface consuante o valor b introduzido
-                    labelB.Text = " + " + TextBoxB.Text + "x";
-                    labelB1.Text = " + " + TextBoxB.Text + "x";
+                    labelB.Text = " + " + alterada + "x";
+                    labelB1.Text = " + " + alterada + "x";
                 }
             }
             else
             {
                 if (TEXT_ALVO == "TextBoxC")
                 {
-                    if (TextBoxC.Text == "")
+                    alterada = TextBoxC.Text.Replace('.', ',');
+                    if (alterada == "")
                     {
                         labelC.Text = " + 0 = 0";
                         labelC1.Text = " + 0";
                         return;
                     }
                     //caso seja negativo para aparecer com espaçamento teremos de analisar e colocar o - com espaçamento e depois apenas o numero 
-                    if (TextBoxC.Text[0] == '-')
+                    if (alterada[0] == '-')
                     {
-                        double.TryParse(TextBoxC.Text, out valor);
+                        double.TryParse(alterada, out valor);
                         labelC.Text = " - " + -1 * valor + " = 0"; //nao afeta a textbox
                         labelC1.Text = " - " + -1 * valor ; //nao afeta a textbox
                     }
                     else
                     {
                         //escreve na interface consuante o valor c introduzido
-                        labelC.Text = " + " + TextBoxC.Text + " = 0";
-                        labelC1.Text = " + " + TextBoxC.Text;
+                        labelC.Text = " + " + alterada + " = 0";
+                        labelC1.Text = " + " + alterada;
                     }
                 }
             }
