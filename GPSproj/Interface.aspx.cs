@@ -102,7 +102,7 @@ public partial class homepage : System.Web.UI.Page
             double x1FR = calculo.formulaResolvente_x1(), x1MN = 0, x2FR = calculo.formulaResolvente_x2(), x2MN = 0;
             calculo.metodoNewton(ref x1MN, ref x2MN);
             // se a diferença entre os valores obtidos pelos 2 métodos for superior ao erroComparacao, surge mensagem de erro
-            if (((Math.Abs(x1FR - x1MN)) >= erroComparacao) || ((Math.Abs(x2FR - x2MN)) >= erroComparacao))
+            if ((((Math.Abs(x1FR - x1MN)) >= erroComparacao) || ((Math.Abs(x2FR - x2MN)) >= erroComparacao)) && (((Math.Abs(x1FR - x2MN)) >= erroComparacao) || ((Math.Abs(x2FR - x1MN)) >= erroComparacao)))
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Erro de cálculo; resultado não fidedigno.');", true);
                 return;
