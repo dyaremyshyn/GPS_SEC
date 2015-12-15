@@ -48,7 +48,7 @@ public partial class homepage : System.Web.UI.Page
         //verifica se a=0 e b=0.
         if (calculo.getA() == 0 && calculo.getB() == 0 && calculo.getC() != 0)
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Os valores introduzidos não constituem uma equação.');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Os valores introduzidos não constituem uma equação. Introduza outro valor para além do termo C.');", true);
             return;
         }
 
@@ -130,7 +130,7 @@ public partial class homepage : System.Web.UI.Page
         alterada = TextBoxA.Text.Replace('.', ',');
         if (!validar(alterada))
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.       Corrigir termo A.');", true);
             TextBoxA.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
             
         }
@@ -149,7 +149,7 @@ public partial class homepage : System.Web.UI.Page
         alterada = TextBoxB.Text.Replace('.', ',');
         if (!validar(alterada))
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.        Corrigir termo B.');", true);
             TextBoxB.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
         else 
@@ -167,7 +167,7 @@ public partial class homepage : System.Web.UI.Page
         alterada = TextBoxC.Text.Replace(".", ",");
         if (!validar(alterada))
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.');", true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "Erro", "alert('Só são permitidos valores numéricos até 8 dígitos.        Corrigir termo C.');", true);
             TextBoxC.BorderColor = System.Drawing.ColorTranslator.FromHtml("#ff0000");
         }
         else 
